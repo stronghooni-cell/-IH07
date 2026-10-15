@@ -1,52 +1,219 @@
-/* 공통으로 사용할 색상 */
+/* 1. CSS 변수: 색상을 한곳에 모아 수정합니다. */
 :root {
-    --bg-color: #ffffff;
-    --text-color: #111111;
-    --card-bg: #f9f9f9;
+    --bg-color: #faf9f5;
+    --text-color: #24332b;
+    --card-bg: #ffffff;
+    --accent-color: #356c50;
+    --accent-soft: #e8eee6;
+    --muted-color: #626d65;
+    --border-color: #dce2d8;
+    --button-text: #ffffff;
+    --bs-body-bg: var(--bg-color);
+    --bs-body-color: var(--text-color);
+    --bs-secondary-color: var(--muted-color);
+    --bs-tertiary-bg: var(--accent-soft);
+    --bs-border-color: var(--border-color);
+    --bs-primary-rgb: 53, 108, 80;
+    --bs-link-color: var(--accent-color);
+    --bs-link-hover-color: var(--text-color);
 }
 
+/* 2. 기본 글자, 여백, 링크와 키보드 선택 표시 */
+html { scroll-behavior: smooth; scroll-padding-top: 90px; }
 body {
+    margin: 0;
     background-color: var(--bg-color);
     color: var(--text-color);
-    margin: 0;
-    font-family: sans-serif;
+    font-family: "Malgun Gothic", "Apple SD Gothic Neo", sans-serif;
+    font-size: 16px;
+    line-height: 1.8;
+    word-break: keep-all;
+    overflow-wrap: break-word;
 }
+.container { max-width: 1080px; }
+a { color: var(--accent-color); text-underline-offset: 4px; }
+a:hover { color: var(--text-color); }
+img { max-width: 100%; height: auto; }
+h1, h2, h3 { line-height: 1.4; font-weight: 700; }
+::selection { background-color: var(--accent-soft); color: var(--text-color); }
+:focus-visible { outline: 3px solid var(--accent-color); outline-offset: 4px; }
+.skip-link {
+    position: fixed;
+    top: -100px;
+    left: 16px;
+    z-index: 2000;
+    padding: 10px 16px;
+    background: var(--card-bg);
+    border: 2px solid var(--accent-color);
+}
+.skip-link:focus { top: 12px; }
 
-/* 자기소개 영역 */
+/* 3. 내비게이션: 스크롤 중에도 위쪽에 남습니다. */
+.site-header {
+    position: sticky;
+    top: 0;
+    z-index: 1020;
+    background-color: var(--bg-color);
+    border-bottom: 1px solid var(--border-color);
+}
+.navbar { padding: 14px 0; --bs-navbar-color: var(--muted-color); --bs-navbar-active-color: var(--text-color); --bs-navbar-hover-color: var(--accent-color); }
+.navbar-brand { display: flex; align-items: center; gap: 10px; color: var(--text-color); font-weight: 700; }
+.navbar-brand:hover { color: var(--accent-color); }
+.brand-dot { width: 12px; height: 12px; border-radius: 50%; background-color: var(--accent-color); }
+.nav-link { font-size: 15px; }
+
+/* 4. Flexbox로 소개 문장과 프로필을 배치합니다. */
 .intro {
     display: flex;
-
-    /* 미션 1: 화면 전체 높이를 차지하기 */
-    height: 100vh;
-
+    height: 100vh; /* 미션 1: 화면 높이의 100% */
+    min-height: 650px;
     align-items: center;
-    justify-content: center;
+    padding: 64px 0;
+    background-color: var(--accent-soft);
+}
+.eyebrow { margin-bottom: 16px; color: var(--accent-color); font-size: 14px; font-weight: 700; letter-spacing: 0.08em; }
+.hero-title { margin-bottom: 24px; font-size: 48px; letter-spacing: -0.04em; }
+.hero-lead { max-width: 520px; margin-bottom: 16px; color: var(--muted-color); font-size: 18px; }
+.hero-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 28px; }
+.profile-card {
+    position: relative;
+    max-width: 340px;
+    margin: 0 auto;
+    padding: 36px 24px 28px;
     text-align: center;
     background-color: var(--card-bg);
-}
-
-/* 기술과 관심사를 담는 카드 */
-.project-card {
-    /* 미션 2: 배경색 변수와 둥근 모서리 적용 */
-    background-color: var(--card-bg);
+    border: 1px solid var(--border-color);
     border-radius: 12px;
+}
+.profile-image { display: block; width: 200px; margin: 0 auto 20px; border-radius: 50%; }
+.profile-label { position: absolute; top: 16px; right: 16px; background-color: var(--accent-soft); color: var(--accent-color); }
+.profile-name { margin-bottom: 8px; font-size: 24px; }
+.profile-role { color: var(--muted-color); font-size: 14px; }
+.profile-tags { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; }
+.profile-tags .badge { color: var(--accent-color); background-color: var(--accent-soft); font-weight: 400; }
 
-    padding: 30px;
+/* 5. 공통 섹션과 자기소개 */
+.section-block { padding: 64px 0; }
+.section-heading { margin-bottom: 28px; }
+.section-number { display: block; margin-bottom: 8px; color: var(--accent-color); font-size: 14px; font-weight: 700; }
+.section-number::before { content: "/ "; } /* 가상 요소로 작은 표시 추가 */
+.section-title { margin-bottom: 12px; font-size: 30px; letter-spacing: -0.03em; }
+.section-description { max-width: 680px; margin-bottom: 0; color: var(--muted-color); }
+.about-copy p { margin-bottom: 18px; }
+.about-note { padding: 24px; background-color: var(--accent-soft); border-left: 4px solid var(--accent-color); border-radius: 0 12px 12px 0; }
+.about-note p:last-child { margin-bottom: 0; }
+
+/* 6. Grid로 기술 카드를 배치합니다. */
+.skill-grid { display: grid; grid-template-columns: 1fr; gap: 20px; }
+.skill-card { height: 100%; }
+.skill-card .card-body { padding: 0; }
+.project-card {
+    padding: 28px;
+    background-color: var(--card-bg); /* 미션 2: 변수로 배경색 지정 */
+    color: var(--text-color);
+    border: 1px solid var(--border-color);
+    border-radius: 12px; /* 미션 2: 둥근 모서리 */
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
-    transition: 0.3s;
+    transition: transform 0.3s;
+}
+.project-card:hover { transform: translateY(-10px); } /* 미션 3 */
+.skill-icon { display: inline-flex; align-items: center; justify-content: center; width: 42px; height: 42px; margin-bottom: 16px; border-radius: 10px; background-color: var(--accent-soft); color: var(--accent-color); font-size: 22px; }
+.skill-card h3 { margin-bottom: 12px; font-size: 20px; }
+.skill-list { padding-left: 20px; margin-bottom: 0; color: var(--muted-color); font-size: 15px; }
+.skill-list li + li { margin-top: 8px; }
+
+/* 7. 관심 있는 서비스와 복습 표 */
+.idea-panel { padding: 32px; background-color: var(--accent-soft); border: 1px solid var(--border-color); border-radius: 12px; }
+.idea-panel h3 { font-size: 22px; }
+.idea-steps { margin-bottom: 0; padding-left: 22px; }
+.idea-steps li + li { margin-top: 10px; }
+.learning-table { margin-top: 28px; overflow-x: auto; border: 1px solid var(--border-color); border-radius: 12px; }
+.learning-table table { margin-bottom: 0; --bs-table-bg: var(--card-bg); --bs-table-color: var(--text-color); --bs-table-border-color: var(--border-color); }
+.learning-table caption { padding: 14px 18px; caption-side: top; color: var(--muted-color); background-color: var(--card-bg); font-size: 14px; }
+.learning-table th, .learning-table td { padding: 16px 18px; vertical-align: top; }
+.learning-table thead th { background-color: var(--accent-soft); }
+.learning-table tbody tr:last-child td, .learning-table tbody tr:last-child th { border-bottom: 0; }
+
+/* 8. 연락처, 버튼, 모달과 입력창 */
+.contact-panel { padding: 32px; background-color: var(--card-bg); border: 1px solid var(--border-color); border-radius: 12px; }
+.btn { padding: 10px 18px; border-radius: 8px; }
+.btn-primary {
+    --bs-btn-color: var(--button-text);
+    --bs-btn-bg: var(--accent-color);
+    --bs-btn-border-color: var(--accent-color);
+    --bs-btn-hover-color: var(--button-text);
+    --bs-btn-hover-bg: var(--accent-color);
+    --bs-btn-hover-border-color: var(--accent-color);
+    --bs-btn-active-color: var(--button-text);
+    --bs-btn-active-bg: var(--accent-color);
+    --bs-btn-active-border-color: var(--accent-color);
+}
+.btn-outline-primary { --bs-btn-color: var(--accent-color); --bs-btn-border-color: var(--accent-color); --bs-btn-hover-bg: var(--accent-color); --bs-btn-hover-color: var(--button-text); --bs-btn-hover-border-color: var(--accent-color); --bs-btn-active-bg: var(--accent-color); --bs-btn-active-color: var(--button-text); --bs-btn-active-border-color: var(--accent-color); }
+.btn-outline-secondary { --bs-btn-color: var(--muted-color); --bs-btn-border-color: var(--muted-color); --bs-btn-hover-bg: var(--muted-color); --bs-btn-hover-border-color: var(--muted-color); --bs-btn-hover-color: var(--bg-color); --bs-btn-active-bg: var(--muted-color); --bs-btn-active-border-color: var(--muted-color); --bs-btn-active-color: var(--bg-color); }
+.modal-content { background-color: var(--card-bg); color: var(--text-color); border-color: var(--border-color); border-radius: 12px; }
+.modal-header, .modal-footer { border-color: var(--border-color); }
+.modal-title { font-size: 22px; }
+.form-control, .form-select { background-color: var(--bg-color); color: var(--text-color); border-color: var(--border-color); }
+.form-control:focus, .form-select:focus { background-color: var(--bg-color); color: var(--text-color); border-color: var(--accent-color); box-shadow: 0 0 0 0.2rem var(--accent-soft); }
+.form-control::placeholder { color: var(--muted-color); }
+.form-text { color: var(--muted-color); }
+.practice-form input[type="email"]:invalid:not(:placeholder-shown) { border-color: #c94949; }
+.practice-form input[type="email"]:invalid:not(:placeholder-shown) + .invalid-feedback { display: block; }
+
+/* 9. 푸터와 맨 위로 이동하는 고정 링크 */
+.site-footer { padding: 28px 0; color: var(--muted-color); background-color: var(--accent-soft); border-top: 1px solid var(--border-color); font-size: 14px; }
+.footer-inner { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px; }
+.footer-inner p { margin-bottom: 0; }
+.back-top { position: fixed; right: 20px; bottom: 20px; z-index: 1010; display: flex; width: 44px; height: 44px; align-items: center; justify-content: center; color: var(--accent-color); background-color: var(--card-bg); border: 1px solid var(--border-color); border-radius: 50%; text-decoration: none; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08); }
+
+/* 10. 미디어 쿼리: 화면 폭에 따라 카드 개수를 바꿉니다. */
+@media (min-width: 768px) {
+    .skill-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (min-width: 992px) {
+    .skill-grid { grid-template-columns: repeat(3, 1fr); }
+}
+@media (max-width: 991.98px) {
+    .site-header { position: static; }
+    .intro { height: auto; min-height: calc(100vh - 76px); padding: 48px 0; }
+    .hero-content { max-width: 620px; }
+    .profile-card { margin-top: 16px; }
+    .navbar-collapse { padding-top: 12px; }
+}
+@media (max-width: 575.98px) {
+    .hero-title { font-size: 36px; }
+    .section-block { padding: 48px 0; }
+    .section-title { font-size: 26px; }
+    .hero-lead { font-size: 16px; }
+    .hero-actions { gap: 10px; }
+    .project-card, .idea-panel, .contact-panel { padding: 24px; }
+    .learning-table th, .learning-table td { min-width: 110px; padding: 12px; font-size: 14px; }
+    .back-top { right: 12px; bottom: 12px; }
 }
 
-/* 카드에 마우스를 올렸을 때 */
-.project-card:hover {
-    /* 미션 3: 위쪽으로 10px 이동 */
-    transform: translateY(-10px);
-}
-
-/* 다크 모드: 선택 과제 */
+/* 11. 기기 설정에 맞춘 다크 모드: 선택 과제 */
 @media (prefers-color-scheme: dark) {
     :root {
-        --bg-color: #121212;
-        --text-color: #f1f1f1;
-        --card-bg: #1e1e1e;
+        color-scheme: dark;
+        --bg-color: #19211c;
+        --text-color: #e4eae3;
+        --card-bg: #222d25;
+        --accent-color: #a5d4b5;
+        --accent-soft: #2c3c30;
+        --muted-color: #b5c2b6;
+        --border-color: #425346;
+        --button-text: #17291d;
+        --bs-primary-rgb: 165, 212, 181;
+        --bs-secondary-bg: #2c3c30;
+        --bs-emphasis-color: #e4eae3;
     }
+    .navbar-toggler-icon, .btn-close { filter: invert(1) grayscale(100%) brightness(1.7); }
+    .form-select { --bs-form-select-bg-img: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3e%3cpath fill='none' stroke='%23b5c2b6' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='m2 5 6 6 6-6'/%3e%3c/svg%3e"); }
+}
+
+/* 움직임을 줄이도록 설정한 기기에서는 효과를 끕니다. */
+@media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    *, *::before, *::after { animation: none !important; transition: none !important; }
+    .project-card:hover { transform: none; }
 }
