@@ -1,80 +1,69 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>강성훈 자기소개</title>
-  <!-- 수업에서 배운 Bootstrap CSS 다음에 내 CSS를 연결합니다. -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
-  <link href="style.css" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>강성훈 | Portfolio</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <header class="site-header">
-    <div class="container header-content">
-      <a class="site-name" href="#intro">강성훈</a>
-      <nav aria-label="자기소개 메뉴">
-        <a href="#about">소개</a>
-        <a href="#learning">배운 내용</a>
-        <a href="#message">동료에게</a>
-      </nav>
-    </div>
-  </header>
+    <header>
+        <nav class="gnb">
+            <a href="#hero">강성훈</a>
+            <a href="#projects">배우는 기술</a>
+            <a href="#contact">연락처</a>
+        </nav>
+    </header>
 
-  <main class="container">
-    <section class="intro" id="intro">
-      <p class="label">오즈코딩스쿨 · 창업가 7기</p>
-      <h1>안녕하세요, 강성훈입니다.</h1>
-      <p class="intro-text">새로운 것을 배우고, 작은 것부터 직접 만들어보고 있습니다.</p>
-    </section>
+    <main>
+        <section id="hero" class="intro">
+            <div class="hero-content">
+                <p>🌱</p>
+                <h1>안녕하세요, 강성훈입니다.</h1>
+                <p>AI와 개발을 조금씩 배우고 있습니다.</p>
+                <p>현재 회사에 다니고 있으며, AI와 개발에 대한
+                    궁금증이 생겨 이번 과정에 지원했습니다.</p>
+            </div>
+        </section>
 
-    <!-- 좁은 화면은 한 칸, 768px 이상에서는 두 칸으로 나눕니다. -->
-    <div class="row g-4">
-      <section class="col-12 col-md-6" id="about">
-        <div class="content-box h-100">
-          <p class="label">01 · 소개와 동기</p>
-          <h2>AI와 개발이 궁금했습니다.</h2>
-          <p>현재 회사에 다니고 있습니다.</p>
-          <p>AI와 개발에 대한 궁금증이 생겼고, 직접 배워보고 싶어 이번 과정에 지원했습니다.</p>
-        </div>
-      </section>
+        <section id="projects" class="section-projects">
+            <h2>배우는 기술과 관심사</h2>
 
-      <section class="col-12 col-md-6">
-        <div class="content-box h-100">
-          <p class="label">02 · 배우는 과정</p>
-          <h2>제 것으로 만드는 시간이 필요했습니다.</h2>
-          <p>새로운 개념을 이해하는 것과 익숙하게 사용하는 것은 다르게 느껴졌습니다.</p>
-          <p>한 번에 잘하기보다는, 배운 내용을 하나씩 적용하면서 천천히 익혀가고 싶습니다.</p>
-        </div>
-      </section>
-    </div>
+            <div class="grid-container">
+                <div class="project-card">
+                    <h3>지금 배우고 있는 것</h3>
+                    <ul>
+                        <li>HTML: 페이지의 구조 만들기</li>
+                        <li>CSS: 글자, 색상, 여백과 배치 꾸미기</li>
+                        <li>Git과 GitHub: 변경 내용을 기록하고 업로드하기</li>
+                    </ul>
 
-    <section class="learning-section" id="learning">
-      <p class="label">03 · 이번 페이지에 적용한 내용</p>
-      <h2>배운 것부터 작게 적용했습니다.</h2>
-      <ul class="learning-list">
-        <li><strong>HTML 구조</strong> — 머리말, 본문, 주제별 영역, 맺음말을 나눴습니다.</li>
-        <li><strong>CSS 여백과 글자</strong> — 내용 사이에 여백을 주고 제목과 본문을 구분했습니다.</li>
-        <li><strong>Bootstrap 반응형 배치</strong> — 넓은 화면에서는 두 칸, 좁은 화면에서는 한 칸으로 보이게 했습니다.</li>
-      </ul>
-      <p class="small-note">브라우저의 가로 폭을 줄이면 위의 소개 영역이 위아래로 배치됩니다.</p>
-    </section>
+                    <p>새로운 개념을 이해하고 제 것으로 만드는 데
+                        시간이 필요하지만, 하나씩 익혀가고 있습니다.</p>
 
-    <section class="goal-section">
-      <p class="label">04 · 앞으로의 관심사</p>
-      <h2>작은 도움을 주고받는 서비스</h2>
-      <p>아직 구체적인 아이템은 정하지 않았지만, 사람들이 작은 도움을 주고받을 수 있는 서비스에 관심이 있습니다.</p>
-      <p>배운 내용을 쌓아가면서, 작게 시작해보고 싶습니다.</p>
-    </section>
+                    <h3>관심 있는 서비스</h3>
+                    <p>아직 구체적으로 정한 것은 없지만,
+                        작은 도움을 주고받는 서비스를 만들어보고 싶습니다.</p>
 
-    <section class="message-section" id="message">
-      <p class="label">05 · 동료에게</p>
-      <h2>같이 배우며 끝까지 가면 좋겠습니다.</h2>
-      <p>모르는 것은 편하게 질문하고, 알고 있는 것은 서로 나누면서 함께 배워가면 좋겠습니다.</p>
-    </section>
-  </main>
+                    <h3>동료분들에게</h3>
+                    <p>모르는 것은 편하게 질문하고, 아는 것은 서로 나누면서
+                        함께 배워가면 좋겠습니다.</p>
+                </div>
+            </div>
+        </section>
 
-  <footer class="site-footer">
-    <div class="container">들어주셔서 감사합니다. · 강성훈</div>
-  </footer>
+        <section id="contact" class="section-custom">
+            <h2>연락처</h2>
+            <p>제가 연습한 내용을 GitHub에 기록하려고 합니다.</p>
+            <a href="https://github.com/stronghooni-cell/-IH07"
+               target="_blank" rel="noopener noreferrer">
+                제 GitHub 저장소 보기
+            </a>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 강성훈. All rights reserved.</p>
+    </footer>
 </body>
 </html>

@@ -1,119 +1,52 @@
-/* 전체 페이지의 기본 모양 */
+/* 공통으로 사용할 색상 */
+:root {
+    --bg-color: #ffffff;
+    --text-color: #111111;
+    --card-bg: #f9f9f9;
+}
+
 body {
-  margin: 0;
-  background-color: #f7f8fa;
-  color: #25313d;
-  font-family: Arial, sans-serif;
-  line-height: 1.8;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    margin: 0;
+    font-family: sans-serif;
 }
 
-/* 가운데 정렬되는 본문 폭 */
-.container {
-  max-width: 960px;
-  padding-right: 24px;
-  padding-left: 24px;
-}
-
-.site-header {
-  padding: 20px 0;
-  background-color: #ffffff;
-  border-bottom: 1px solid #e1e6eb;
-}
-
-/* 수업에서 배운 Flexbox로 이름과 메뉴를 나란히 놓습니다. */
-.header-content {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  align-items: center;
-  gap: 12px;
-}
-
-a {
-  color: #315f66;
-  text-decoration: none;
-}
-
-a:hover {
-  text-decoration: underline;
-}
-
-.site-name {
-  color: #25313d;
-  font-weight: bold;
-}
-
-nav {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 20px;
-  font-size: 14px;
-}
-
+/* 자기소개 영역 */
 .intro {
-  padding: 64px 0 40px;
+    display: flex;
+
+    /* 미션 1: 화면 전체 높이를 차지하기 */
+    height: 100vh;
+
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    background-color: var(--card-bg);
 }
 
-.label {
-  margin-bottom: 12px;
-  color: #466e73;
-  font-size: 14px;
+/* 기술과 관심사를 담는 카드 */
+.project-card {
+    /* 미션 2: 배경색 변수와 둥근 모서리 적용 */
+    background-color: var(--card-bg);
+    border-radius: 12px;
+
+    padding: 30px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
+    transition: 0.3s;
 }
 
-h1 {
-  margin-bottom: 16px;
-  font-size: 32px;
-  font-weight: bold;
-  line-height: 1.5;
+/* 카드에 마우스를 올렸을 때 */
+.project-card:hover {
+    /* 미션 3: 위쪽으로 10px 이동 */
+    transform: translateY(-10px);
 }
 
-h2 {
-  margin-bottom: 20px;
-  font-size: 21px;
-  font-weight: bold;
-  line-height: 1.6;
-}
-
-p {
-  margin-bottom: 12px;
-}
-
-.intro-text {
-  color: #596673;
-}
-
-.content-box {
-  padding: 28px;
-  background-color: #ffffff;
-  border: 1px solid #e1e6eb;
-  border-radius: 8px;
-}
-
-.learning-section,
-.goal-section,
-.message-section {
-  margin-top: 40px;
-  padding-top: 32px;
-  border-top: 1px solid #dce2e7;
-}
-
-.learning-list {
-  padding-left: 22px;
-}
-
-.learning-list li {
-  margin-bottom: 12px;
-}
-
-.small-note {
-  color: #596673;
-  font-size: 14px;
-}
-
-.site-footer {
-  margin-top: 48px;
-  padding: 24px 0;
-  color: #596673;
-  background-color: #edf1f3;
-  font-size: 14px;
+/* 다크 모드: 선택 과제 */
+@media (prefers-color-scheme: dark) {
+    :root {
+        --bg-color: #121212;
+        --text-color: #f1f1f1;
+        --card-bg: #1e1e1e;
+    }
 }
